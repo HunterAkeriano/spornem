@@ -95,64 +95,6 @@
     }
   }
 
-  &__lang {
-    position: relative;
-
-    &:hover &-dropdown {
-      opacity: 1;
-      visibility: visible;
-      transform: translateY(0);
-    }
-  }
-
-  &__lang-btn {
-    padding: $spacing-sm $spacing-md;
-    border-radius: $radius-sm;
-    border: 1px solid rgba($marine-mid, 0.25);
-    background: $surface-elevated;
-    color: $marine-deep;
-    font-weight: 700;
-    font-size: 14px;
-    cursor: pointer;
-    @include transition(border-color, box-shadow);
-
-    &:hover {
-      border-color: $marine-accent;
-      box-shadow: $shadow-soft;
-    }
-  }
-
-  &__lang-dropdown {
-    position: absolute;
-    top: calc(100% + $spacing-sm);
-    right: 0;
-    min-width: 150px;
-    @include glass-panel;
-    padding: $spacing-xs;
-    opacity: 0;
-    visibility: hidden;
-    transform: translateY(-8px);
-    @include transition(opacity, visibility, transform);
-  }
-
-  &__lang-option {
-    width: 100%;
-    padding: $spacing-sm $spacing-md;
-    border: none;
-    background: transparent;
-    text-align: left;
-    color: $text-secondary;
-    font-weight: 600;
-    border-radius: $radius-sm;
-    cursor: pointer;
-    @include transition(background, color);
-
-    &:hover {
-      background: rgba($marine-light, 0.15);
-      color: $marine-deep;
-    }
-  }
-
   &__burger {
     display: none;
     flex-direction: column;
@@ -269,47 +211,5 @@
     display: flex;
     flex-direction: column;
     gap: $spacing-xl;
-  }
-
-  &__mobile-lang {
-    display: flex;
-    flex-direction: column;
-    gap: $spacing-md;
-  }
-
-  &__mobile-label {
-    font-size: 14px;
-    font-weight: 700;
-    color: $text-muted;
-    text-transform: uppercase;
-    letter-spacing: 0.5px;
-  }
-
-  &__mobile-lang-btns {
-    display: flex;
-    gap: $spacing-sm;
-  }
-
-  &__mobile-lang-btn {
-    flex: 1;
-    padding: $spacing-md $spacing-lg;
-    border-radius: $radius-md;
-    border: 2px solid rgba($marine-mid, 0.25);
-    background: transparent;
-    color: $text-secondary;
-    font-weight: 600;
-    cursor: pointer;
-    @include transition(border-color, background, color);
-
-    &:hover {
-      border-color: $marine-accent;
-      background: rgba($marine-light, 0.1);
-    }
-
-    &_active {
-      border-color: $marine-accent;
-      background: rgba($marine-accent, 0.15);
-      color: $marine-deep;
-    }
   }
 }

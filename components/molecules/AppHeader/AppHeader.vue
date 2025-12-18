@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { computed, ref, watch } from 'vue'
+import { LangSelect } from '@/components/molecules'
 
 const { locale, t } = useI18n()
 const router = useRouter()
@@ -12,10 +13,6 @@ const locales = [
   { code: 'en', name: 'English' },
   { code: 'uk', name: 'Українська' }
 ]
-
-const currentLocaleName = computed(() => {
-  return locales.find(l => l.code === locale.value)?.name || 'EN'
-})
 
 const switchLocale = async (code: string) => {
   const path = switchLocalePath(code)
@@ -70,22 +67,12 @@ watch(isMenuOpen, (newValue) => {
         </nav>
 
         <div class="app-header__actions app-header__actions_desktop">
-          <div class="app-header__lang">
-            <button class="app-header__lang-btn" type="button">
-              {{ currentLocaleName }}
-            </button>
-            <div class="app-header__lang-dropdown">
-              <button
-                v-for="loc in locales"
-                :key="loc.code"
-                type="button"
-                class="app-header__lang-option"
-                @click="switchLocale(loc.code)"
-              >
-                {{ loc.name }}
-              </button>
-            </div>
-          </div>
+          <LangSelect
+            :locales="locales"
+            :current-locale="locale"
+            variant="desktop"
+            @change="switchLocale"
+          />
 
           <button class="btn btn_primary" type="button">
             {{ t('GLOBAL.LOGIN') }}
@@ -128,21 +115,12 @@ watch(isMenuOpen, (newValue) => {
       </nav>
 
       <div class="app-header__mobile-actions">
-        <div class="app-header__mobile-lang">
-          <span class="app-header__mobile-label">{{ t('GLOBAL.LANG_SWITCH') }}</span>
-          <div class="app-header__mobile-lang-btns">
-            <button
-              v-for="loc in locales"
-              :key="loc.code"
-              type="button"
-              class="app-header__mobile-lang-btn"
-              :class="{ 'app-header__mobile-lang-btn_active': locale === loc.code }"
-              @click="switchLocale(loc.code)"
-            >
-              {{ loc.name }}
-            </button>
-          </div>
-        </div>
+        <LangSelect
+          :locales="locales"
+          :current-locale="locale"
+          variant="mobile"
+          @change="switchLocale"
+        />
 
         <button class="btn btn_primary" type="button" @click="closeMenu">
           {{ t('GLOBAL.LOGIN') }}
