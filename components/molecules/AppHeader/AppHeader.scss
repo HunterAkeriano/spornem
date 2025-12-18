@@ -201,6 +201,7 @@
     visibility: hidden;
     z-index: 99;
     @include transition(opacity, visibility);
+    height: 100vh;
 
     &_active {
       opacity: 1;
@@ -226,6 +227,7 @@
     z-index: 101;
     overflow-y: auto;
     padding: $spacing-3xl $spacing-2xl;
+    height: 100vh;
 
     @media (min-width: $breakpoint-desktop + 1) {
       display: none;
