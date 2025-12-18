@@ -1,0 +1,43 @@
+.base-date {
+  display: grid;
+  gap: 8px;
+}
+
+.base-date__header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 8px;
+}
+
+.base-date__label {
+  font-weight: 700;
+  color: var(--marine-deep);
+}
+
+.base-date__error {
+  color: #c0342b;
+  font-size: 13px;
+  font-weight: 700;
+}
+
+.base-date__field {
+  position: relative;
+}
+
+.base-date__control {
+  width: 100%;
+  padding: 13px 14px;
+  border-radius: 12px;
+  border: 1px solid rgba(31, 111, 139, 0.25);
+  background: rgba(255, 255, 255, 0.9);
+  color: var(--text-primary);
+  font-size: 15px;
+  transition: border-color 150ms ease, box-shadow 200ms ease;
+}
+
+.base-date__control:focus {
+  outline: none;
+  border-color: var(--marine-accent);
+  box-shadow: 0 0 0 3px rgba(20, 179, 214, 0.15);
+}

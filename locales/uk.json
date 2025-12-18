@@ -1,0 +1,37 @@
+{
+  "GLOBAL": {
+    "APP_NAME": "Спорньом",
+    "ACTION_PRIMARY": "Опублікувати спір",
+    "LANG_SWITCH": "Змінити мову",
+    "FEEDBACK_SUCCESS": "Чернетка спору збережена спокійно.",
+    "FEEDBACK_ERROR": "Перевірте виділені поля."
+  },
+  "DEBATE": {
+    "TITLE": "Публічні спори у морських відтінках",
+    "SUBTITLE": "Створюйте прозорі дискусії з термінами та фокусом на суті.",
+    "TOPIC": "Тема спору",
+    "CATEGORY": "Категорія",
+    "DESCRIPTION": "Опис",
+    "SCHEDULE": "Час",
+    "CATEGORIES": "Обрати напрям",
+    "CATEGORY_POLITICS": "Політика",
+    "CATEGORY_SOCIAL": "Соціальне",
+    "CATEGORY_TECH": "Технології",
+    "CATEGORY_OTHER": "Інше",
+    "PLACEHOLDER_TOPIC": "Про що дискутуємо?",
+    "PLACEHOLDER_DESCRIPTION": "Опишіть контекст і правила спокійно.",
+    "PLACEHOLDER_CATEGORY": "Оберіть потік"
+  },
+  "USER": {
+    "NAME": "Ваше ім’я",
+    "EMAIL": "Контактний email"
+  },
+  "ERRORS": {
+    "TOPIC_REQUIRED": "Тема має містити щонайменше 3 символи.",
+    "DESCRIPTION_REQUIRED": "Опис має містити щонайменше 12 символів.",
+    "CATEGORY_REQUIRED": "Оберіть будь-яку категорію.",
+    "DATE_REQUIRED": "Оберіть майбутню дату і час.",
+    "NAME_REQUIRED": "Ім’я має містити щонайменше 2 символи.",
+    "EMAIL_REQUIRED": "Вкажіть коректний email."
+  }
+}

@@ -1,0 +1,37 @@
+{
+  "GLOBAL": {
+    "APP_NAME": "Спорньом",
+    "ACTION_PRIMARY": "Publish dispute",
+    "LANG_SWITCH": "Switch language",
+    "FEEDBACK_SUCCESS": "Your debate is drafted calmly.",
+    "FEEDBACK_ERROR": "Check highlighted fields."
+  },
+  "DEBATE": {
+    "TITLE": "Public debates in calm marine tones",
+    "SUBTITLE": "Create transparent, time-bound debates and keep participants focused on the essence.",
+    "TOPIC": "Debate topic",
+    "CATEGORY": "Category",
+    "DESCRIPTION": "Description",
+    "SCHEDULE": "Schedule",
+    "CATEGORIES": "Pick the vibe",
+    "CATEGORY_POLITICS": "Politics",
+    "CATEGORY_SOCIAL": "Society",
+    "CATEGORY_TECH": "Tech",
+    "CATEGORY_OTHER": "Other",
+    "PLACEHOLDER_TOPIC": "What should we debate?",
+    "PLACEHOLDER_DESCRIPTION": "Outline context and rules in a calm tone.",
+    "PLACEHOLDER_CATEGORY": "Select a stream"
+  },
+  "USER": {
+    "NAME": "Your display name",
+    "EMAIL": "Contact email"
+  },
+  "ERRORS": {
+    "TOPIC_REQUIRED": "Topic should have at least 3 symbols.",
+    "DESCRIPTION_REQUIRED": "Description should have at least 12 symbols.",
+    "CATEGORY_REQUIRED": "Pick any category.",
+    "DATE_REQUIRED": "Pick a date and time in the future.",
+    "NAME_REQUIRED": "Name should have at least 2 symbols.",
+    "EMAIL_REQUIRED": "Use a valid email."
+  }
+}

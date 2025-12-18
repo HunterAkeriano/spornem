@@ -1,0 +1,212 @@
+:root {
+  --marine-deep: #0f3b57;
+  --marine-mid: #1f6f8b;
+  --marine-light: #7eb5c9;
+  --marine-foam: #e2f1f8;
+  --marine-accent: #14b3d6;
+  --text-primary: #0f1f2d;
+  --text-muted: #5f7284;
+  --surface: #f7fbff;
+  --radius: 14px;
+  --shadow-soft: 0 10px 30px rgba(15, 59, 87, 0.12);
+  --shadow-strong: 0 18px 45px rgba(15, 59, 87, 0.18);
+  color-scheme: light;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: 'Manrope', 'Segoe UI', system-ui, -apple-system, sans-serif;
+  background: radial-gradient(circle at 20% 20%, rgba(126, 181, 201, 0.25), transparent 30%),
+    radial-gradient(circle at 80% 10%, rgba(20, 179, 214, 0.22), transparent 28%),
+    linear-gradient(135deg, #f3faff, #e5f3fa 35%, #d4e9f5 70%, #f2fbff);
+  color: var(--text-primary);
+  min-height: 100vh;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+button {
+  font-family: inherit;
+}
+
+.app-shell {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 32px 24px 80px;
+}
+
+.glass-panel {
+  background: rgba(255, 255, 255, 0.85);
+  border: 1px solid rgba(126, 181, 201, 0.25);
+  backdrop-filter: blur(16px);
+  box-shadow: var(--shadow-soft);
+  border-radius: 22px;
+}
+
+.primary-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 14px 18px;
+  border-radius: 12px;
+  border: none;
+  background: linear-gradient(120deg, var(--marine-mid), var(--marine-accent));
+  color: #f9feff;
+  font-weight: 700;
+  letter-spacing: 0.2px;
+  cursor: pointer;
+  transition: transform 150ms ease, box-shadow 200ms ease;
+  box-shadow: var(--shadow-soft);
+}
+
+.primary-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-strong);
+}
+
+.primary-btn:active {
+  transform: translateY(0);
+}
+
+.section-title {
+  margin: 0 0 8px;
+  font-size: 32px;
+  letter-spacing: -0.4px;
+}
+
+.section-subtitle {
+  margin: 0 0 24px;
+  color: var(--text-muted);
+  font-size: 16px;
+  max-width: 720px;
+}
+
+.card-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 18px;
+}
+
+.card {
+  padding: 16px 18px;
+  border-radius: 14px;
+  background: linear-gradient(160deg, rgba(126, 181, 201, 0.16), rgba(20, 179, 214, 0.12));
+  border: 1px solid rgba(31, 111, 139, 0.2);
+  box-shadow: var(--shadow-soft);
+}
+
+.card strong {
+  display: block;
+  margin-bottom: 6px;
+  color: var(--marine-deep);
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  padding: 18px 20px;
+  border-radius: 16px;
+  background: linear-gradient(120deg, rgba(15, 59, 87, 0.12), rgba(20, 179, 214, 0.2));
+  border: 1px solid rgba(31, 111, 139, 0.25);
+  box-shadow: var(--shadow-soft);
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-weight: 800;
+  letter-spacing: 0.4px;
+  color: var(--marine-deep);
+}
+
+.brand-mark {
+  width: 38px;
+  height: 38px;
+  border-radius: 12px;
+  background: linear-gradient(135deg, var(--marine-mid), var(--marine-accent));
+  display: grid;
+  place-items: center;
+  color: #eaf8ff;
+  font-weight: 900;
+  box-shadow: var(--shadow-strong);
+}
+
+.lang-switch {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 12px;
+  background: rgba(255, 255, 255, 0.8);
+  border: 1px solid rgba(31, 111, 139, 0.18);
+  border-radius: 12px;
+  cursor: pointer;
+  font-weight: 700;
+  color: var(--marine-deep);
+  transition: background 150ms ease, box-shadow 200ms ease;
+  box-shadow: var(--shadow-soft);
+}
+
+.lang-switch:hover {
+  background: rgba(255, 255, 255, 0.95);
+  box-shadow: var(--shadow-strong);
+}
+
+.form-shell {
+  margin-top: 22px;
+  padding: 20px;
+}
+
+.form-row {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 16px;
+}
+
+.form-actions {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 18px;
+}
+
+.feedback {
+  margin-top: 12px;
+  padding: 12px 14px;
+  border-radius: 12px;
+  background: rgba(31, 111, 139, 0.1);
+  color: var(--marine-deep);
+  font-weight: 700;
+}
+
+@media (max-width: 640px) {
+  .app-shell {
+    padding: 24px 16px 60px;
+  }
+
+  .section-title {
+    font-size: 26px;
+  }
+
+  .header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .form-actions {
+    justify-content: stretch;
+  }
+
+  .primary-btn {
+    width: 100%;
+  }
+}
