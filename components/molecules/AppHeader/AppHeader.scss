@@ -4,21 +4,16 @@
 .app-header {
   padding: $spacing-lg 0;
   @include glass-panel;
-  position: sticky;
+  position: fixed;
   top: 0;
   z-index: 100;
-  margin-bottom: $spacing-2xl;
+  width: 100%;
 
   &__inner {
     display: flex;
     align-items: center;
     justify-content: space-between;
     gap: $spacing-2xl;
-
-    @include mobile {
-      flex-wrap: wrap;
-      gap: $spacing-lg;
-    }
   }
 
   &__brand {
@@ -52,8 +47,8 @@
     color: $marine-deep;
     letter-spacing: 0.3px;
 
-    @include mobile {
-      display: none;
+    @include tablet {
+      font-size: 18px;
     }
   }
 
@@ -62,11 +57,10 @@
     align-items: center;
     gap: $spacing-xl;
 
-    @include mobile {
-      order: 3;
-      width: 100%;
-      justify-content: center;
-      gap: $spacing-lg;
+    &_desktop {
+      @media (max-width: $breakpoint-desktop) {
+        display: none;
+      }
     }
   }
 
@@ -93,6 +87,12 @@
     display: flex;
     align-items: center;
     gap: $spacing-md;
+
+    &_desktop {
+      @media (max-width: $breakpoint-desktop) {
+        display: none;
+      }
+    }
   }
 
   &__lang {
@@ -149,6 +149,164 @@
 
     &:hover {
       background: rgba($marine-light, 0.15);
+      color: $marine-deep;
+    }
+  }
+
+  &__burger {
+    display: none;
+    flex-direction: column;
+    gap: 5px;
+    background: transparent;
+    border: none;
+    padding: $spacing-sm;
+    cursor: pointer;
+    z-index: 102;
+
+    @media (max-width: $breakpoint-desktop) {
+      display: flex;
+    }
+
+    span {
+      width: 26px;
+      height: 3px;
+      background: $marine-deep;
+      border-radius: 2px;
+      @include transition(transform, opacity, background);
+    }
+
+    &_active {
+      span:nth-child(1) {
+        transform: translateY(8px) rotate(45deg);
+      }
+
+      span:nth-child(2) {
+        opacity: 0;
+      }
+
+      span:nth-child(3) {
+        transform: translateY(-8px) rotate(-45deg);
+      }
+    }
+  }
+
+  &__overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba($marine-deep, 0.5);
+    opacity: 0;
+    visibility: hidden;
+    z-index: 99;
+    @include transition(opacity, visibility);
+
+    &_active {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    @media (min-width: $breakpoint-desktop + 1) {
+      display: none;
+    }
+  }
+
+  &__mobile-menu {
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    width: 100%;
+    max-width: 400px;
+    background: $surface;
+    box-shadow: -4px 0 20px rgba($marine-deep, 0.15);
+    transform: translateX(100%);
+    @include transition(transform);
+    z-index: 101;
+    overflow-y: auto;
+    padding: $spacing-3xl $spacing-2xl;
+
+    @media (min-width: $breakpoint-desktop + 1) {
+      display: none;
+    }
+
+    @include mobile {
+      max-width: 100%;
+    }
+
+    &_active {
+      transform: translateX(0);
+    }
+  }
+
+  &__mobile-nav {
+    display: flex;
+    flex-direction: column;
+    gap: $spacing-sm;
+    margin-bottom: $spacing-3xl;
+  }
+
+  &__mobile-link {
+    padding: $spacing-lg $spacing-xl;
+    color: $text-secondary;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 18px;
+    border-radius: $radius-md;
+    @include transition(background, color);
+
+    &:hover,
+    &.router-link-active {
+      background: rgba($marine-accent, 0.1);
+      color: $marine-deep;
+    }
+  }
+
+  &__mobile-actions {
+    display: flex;
+    flex-direction: column;
+    gap: $spacing-xl;
+  }
+
+  &__mobile-lang {
+    display: flex;
+    flex-direction: column;
+    gap: $spacing-md;
+  }
+
+  &__mobile-label {
+    font-size: 14px;
+    font-weight: 700;
+    color: $text-muted;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+
+  &__mobile-lang-btns {
+    display: flex;
+    gap: $spacing-sm;
+  }
+
+  &__mobile-lang-btn {
+    flex: 1;
+    padding: $spacing-md $spacing-lg;
+    border-radius: $radius-md;
+    border: 2px solid rgba($marine-mid, 0.25);
+    background: transparent;
+    color: $text-secondary;
+    font-weight: 600;
+    cursor: pointer;
+    @include transition(border-color, background, color);
+
+    &:hover {
+      border-color: $marine-accent;
+      background: rgba($marine-light, 0.1);
+    }
+
+    &_active {
+      border-color: $marine-accent;
+      background: rgba($marine-accent, 0.15);
       color: $marine-deep;
     }
   }

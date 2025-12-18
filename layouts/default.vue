@@ -20,6 +20,7 @@ import { AppFooter } from '@/components/molecules/AppFooter'
   display: flex;
   flex-direction: column;
   min-height: 100vh;
+  margin-top: 90px;
 
   &__main {
     flex: 1;
