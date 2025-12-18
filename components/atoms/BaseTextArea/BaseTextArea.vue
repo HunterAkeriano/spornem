@@ -65,4 +65,4 @@ const onBlur = () => {
   </label>
 </template>
 
-<style scoped src="./BaseTextArea.css"></style>
+<style scoped lang="scss" src="./BaseTextArea.scss"></style>

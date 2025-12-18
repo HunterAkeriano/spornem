@@ -1,7 +1,7 @@
 export default defineNuxtConfig({
   compatibilityDate: '2025-07-15',
   devtools: { enabled: true },
-  css: ['@/assets/styles/main.css', '@vuepic/vue-datepicker/dist/main.css'],
+  css: ['@/assets/styles/main.scss', '@vuepic/vue-datepicker/dist/main.css'],
   components: [
     {
       path: '~/components',

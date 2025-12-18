@@ -1,0 +1,155 @@
+@use '@/assets/styles/variables' as *;
+@use '@/assets/styles/mixins' as *;
+
+.app-header {
+  padding: $spacing-lg 0;
+  @include glass-panel;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  margin-bottom: $spacing-2xl;
+
+  &__inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: $spacing-2xl;
+
+    @include mobile {
+      flex-wrap: wrap;
+      gap: $spacing-lg;
+    }
+  }
+
+  &__brand {
+    display: flex;
+    align-items: center;
+    gap: $spacing-md;
+    text-decoration: none;
+    @include transition(transform);
+
+    &:hover {
+      transform: translateY(-2px);
+    }
+  }
+
+  &__logo {
+    width: 48px;
+    height: 48px;
+    border-radius: $radius-md;
+    @include gradient-marine;
+    display: grid;
+    place-items: center;
+    color: $text-white;
+    font-weight: 900;
+    font-size: 24px;
+    box-shadow: $shadow-strong;
+  }
+
+  &__name {
+    font-size: 20px;
+    font-weight: 800;
+    color: $marine-deep;
+    letter-spacing: 0.3px;
+
+    @include mobile {
+      display: none;
+    }
+  }
+
+  &__nav {
+    display: flex;
+    align-items: center;
+    gap: $spacing-xl;
+
+    @include mobile {
+      order: 3;
+      width: 100%;
+      justify-content: center;
+      gap: $spacing-lg;
+    }
+  }
+
+  &__nav-link {
+    font-weight: 600;
+    color: $text-secondary;
+    text-decoration: none;
+    padding: $spacing-sm $spacing-md;
+    border-radius: $radius-sm;
+    @include transition(color, background);
+
+    &:hover {
+      color: $marine-accent;
+      background: rgba($marine-light, 0.1);
+    }
+
+    &.router-link-active {
+      color: $marine-deep;
+      background: rgba($marine-accent, 0.1);
+    }
+  }
+
+  &__actions {
+    display: flex;
+    align-items: center;
+    gap: $spacing-md;
+  }
+
+  &__lang {
+    position: relative;
+
+    &:hover &-dropdown {
+      opacity: 1;
+      visibility: visible;
+      transform: translateY(0);
+    }
+  }
+
+  &__lang-btn {
+    padding: $spacing-sm $spacing-md;
+    border-radius: $radius-sm;
+    border: 1px solid rgba($marine-mid, 0.25);
+    background: $surface-elevated;
+    color: $marine-deep;
+    font-weight: 700;
+    font-size: 14px;
+    cursor: pointer;
+    @include transition(border-color, box-shadow);
+
+    &:hover {
+      border-color: $marine-accent;
+      box-shadow: $shadow-soft;
+    }
+  }
+
+  &__lang-dropdown {
+    position: absolute;
+    top: calc(100% + $spacing-sm);
+    right: 0;
+    min-width: 150px;
+    @include glass-panel;
+    padding: $spacing-xs;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-8px);
+    @include transition(opacity, visibility, transform);
+  }
+
+  &__lang-option {
+    width: 100%;
+    padding: $spacing-sm $spacing-md;
+    border: none;
+    background: transparent;
+    text-align: left;
+    color: $text-secondary;
+    font-weight: 600;
+    border-radius: $radius-sm;
+    cursor: pointer;
+    @include transition(background, color);
+
+    &:hover {
+      background: rgba($marine-light, 0.15);
+      color: $marine-deep;
+    }
+  }
+}

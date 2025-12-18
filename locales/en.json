@@ -1,10 +1,35 @@
 {
   "GLOBAL": {
-    "APP_NAME": "Спорньом",
-    "ACTION_PRIMARY": "Publish dispute",
+    "APP_NAME": "Sporn'om",
+    "ACTION_PRIMARY": "Publish debate",
     "LANG_SWITCH": "Switch language",
     "FEEDBACK_SUCCESS": "Your debate is drafted calmly.",
-    "FEEDBACK_ERROR": "Check highlighted fields."
+    "FEEDBACK_ERROR": "Check highlighted fields.",
+    "LOGIN": "Login"
+  },
+  "NAV": {
+    "HOME": "Home",
+    "CREATE_DEBATE": "Create Debate"
+  },
+  "FOOTER": {
+    "TAGLINE": "Public debates in calm marine tones",
+    "ABOUT": "About",
+    "PRIVACY": "Privacy",
+    "TERMS": "Terms",
+    "CONTACT": "Contact",
+    "RIGHTS": "All rights reserved."
+  },
+  "HOME": {
+    "HERO_TITLE": "Debate with Clarity",
+    "HERO_SUBTITLE": "Create transparent, time-bound debates in calm marine tones. Keep participants focused on the essence.",
+    "CTA_PRIMARY": "Start a Debate",
+    "CTA_SECONDARY": "Learn More",
+    "FEATURE_1_TITLE": "Structured Discussions",
+    "FEATURE_1_DESC": "Set clear rules, timelines, and topics for your debates.",
+    "FEATURE_2_TITLE": "Calm Environment",
+    "FEATURE_2_DESC": "Marine-inspired design helps maintain focus and civility.",
+    "FEATURE_3_TITLE": "Transparent Process",
+    "FEATURE_3_DESC": "All arguments visible, timestamped, and publicly accessible."
   },
   "DEBATE": {
     "TITLE": "Public debates in calm marine tones",

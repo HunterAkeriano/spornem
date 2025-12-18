@@ -1,39 +1,28 @@
 <script setup lang="ts">
-import { computed } from 'vue'
-
-const { locale, t } = useI18n()
-const router = useRouter()
-const switchLocalePath = useSwitchLocalePath()
-const nuxtApp = useNuxtApp()
-
-const toggleLocale = async () => {
-  const target = locale.value === 'uk' ? 'en' : 'uk'
-  const path = switchLocalePath(target)
-  if (path) {
-    await router.push(path)
-    nuxtApp.$globalContext?.setPath?.(path)
-  }
-}
-
-const localeLabel = computed(() => locale.value.toUpperCase())
+import { AppHeader } from '@/components/molecules/AppHeader'
+import { AppFooter } from '@/components/molecules/AppFooter'
 </script>
 
 <template>
-  <div class="app-shell">
-    <header class="header glass-panel">
-      <div class="brand">
-        <div class="brand-mark">C</div>
-        <div>
-          <div>{{ t('GLOBAL.APP_NAME') }}</div>
-          <small>{{ nuxtApp.$globalContext.currentPath }}</small>
-        </div>
-      </div>
-      <button type="button" class="lang-switch" @click="toggleLocale">
-        {{ t('GLOBAL.LANG_SWITCH') }} · {{ localeLabel }}
-      </button>
-    </header>
-    <main>
+  <div class="layout">
+    <AppHeader />
+    <main class="layout__main">
       <slot />
     </main>
+    <AppFooter />
   </div>
 </template>
+
+<style scoped lang="scss">
+@use '@/assets/styles/variables' as *;
+
+.layout {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+
+  &__main {
+    flex: 1;
+  }
+}
+</style>

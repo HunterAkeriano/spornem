@@ -1,0 +1,68 @@
+@use '@/assets/styles/variables' as *;
+@use '@/assets/styles/mixins' as *;
+
+.app-footer {
+  margin-top: auto;
+  padding: $spacing-3xl 0 $spacing-2xl;
+  @include glass-panel;
+
+  &__inner {
+    display: grid;
+    gap: $spacing-2xl;
+    text-align: center;
+  }
+
+  &__brand {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: $spacing-md;
+  }
+
+  &__logo {
+    width: 56px;
+    height: 56px;
+    border-radius: $radius-lg;
+    @include gradient-marine;
+    display: grid;
+    place-items: center;
+    color: $text-white;
+    font-weight: 900;
+    font-size: 28px;
+    box-shadow: $shadow-strong;
+  }
+
+  &__tagline {
+    margin: 0;
+    color: $text-muted;
+    max-width: 400px;
+    line-height: 1.6;
+  }
+
+  &__nav {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: $spacing-xl;
+
+    @include mobile {
+      gap: $spacing-lg;
+    }
+  }
+
+  &__link {
+    color: $text-secondary;
+    text-decoration: none;
+    font-weight: 600;
+    @include transition(color);
+
+    &:hover {
+      color: $marine-accent;
+    }
+  }
+
+  &__copy {
+    color: $text-muted;
+    font-size: 14px;
+  }
+}

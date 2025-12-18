@@ -1,138 +1,151 @@
 <script setup lang="ts">
-import { computed, reactive, ref } from 'vue'
-import { z } from 'zod'
-import { BaseInput, BaseSelect, BaseTextArea, BaseDatePicker } from '@/components/atoms'
-
 const { t } = useI18n()
-const { $globalContext } = useNuxtApp()
+const localePath = useLocalePath()
 
-const schema = computed(() =>
-  z.object({
-    topic: z.string().min(3, t('ERRORS.TOPIC_REQUIRED')),
-    category: z.string().min(1, t('ERRORS.CATEGORY_REQUIRED')),
-    description: z.string().min(12, t('ERRORS.DESCRIPTION_REQUIRED')),
-    schedule: z
-      .date({ message: t('ERRORS.DATE_REQUIRED') })
-      .refine((value) => value && value > new Date(), t('ERRORS.DATE_REQUIRED')),
-    name: z.string().min(2, t('ERRORS.NAME_REQUIRED')),
-    email: z.string().email(t('ERRORS.EMAIL_REQUIRED'))
-  })
-)
-
-const formState = reactive({
-  topic: '',
-  category: '',
-  description: '',
-  schedule: new Date(Date.now() + 60 * 60 * 1000),
-  name: '',
-  email: ''
-})
-
-const categories = computed(() => [
-  { label: t('DEBATE.CATEGORY_POLITICS'), value: 'politics' },
-  { label: t('DEBATE.CATEGORY_SOCIAL'), value: 'social' },
-  { label: t('DEBATE.CATEGORY_TECH'), value: 'tech' },
-  { label: t('DEBATE.CATEGORY_OTHER'), value: 'other' }
-])
-
-const feedback = ref('')
-
-const submitForm = () => {
-  const result = schema.value.safeParse(formState)
-  feedback.value = result.success ? t('GLOBAL.FEEDBACK_SUCCESS') : t('GLOBAL.FEEDBACK_ERROR')
-  $globalContext.setPath($globalContext.currentPath.value)
-}
+const features = [
+  {
+    title: t('HOME.FEATURE_1_TITLE'),
+    description: t('HOME.FEATURE_1_DESC')
+  },
+  {
+    title: t('HOME.FEATURE_2_TITLE'),
+    description: t('HOME.FEATURE_2_DESC')
+  },
+  {
+    title: t('HOME.FEATURE_3_TITLE'),
+    description: t('HOME.FEATURE_3_DESC')
+  }
+]
 </script>
 
 <template>
-  <div class="page">
+  <div class="home">
     <section class="hero">
-      <div class="section-heading">
-        <h1 class="section-title">{{ t('DEBATE.TITLE') }}</h1>
-        <p class="section-subtitle">{{ t('DEBATE.SUBTITLE') }}</p>
-      </div>
-      <div class="card-grid">
-        <div class="card">
-          <strong>{{ t('DEBATE.CATEGORIES') }}</strong>
-          <span>{{ t('DEBATE.CATEGORY_TECH') }} · {{ t('DEBATE.CATEGORY_SOCIAL') }}</span>
-        </div>
-        <div class="card">
-          <strong>{{ t('DEBATE.SCHEDULE') }}</strong>
-          <span>{{ t('GLOBAL.APP_NAME') }}</span>
-        </div>
-        <div class="card">
-          <strong>{{ t('GLOBAL.APP_NAME') }}</strong>
-          <span>{{ $globalContext.currentPath }}</span>
+      <div class="container">
+        <div class="hero__content">
+          <h1 class="hero__title">
+            {{ t('HOME.HERO_TITLE') }}
+          </h1>
+          <p class="hero__subtitle">
+            {{ t('HOME.HERO_SUBTITLE') }}
+          </p>
+          <div class="hero__actions">
+            <NuxtLink :to="localePath('/create-debate')" class="btn btn_primary">
+              {{ t('HOME.CTA_PRIMARY') }}
+            </NuxtLink>
+            <button class="btn btn_secondary" type="button">
+              {{ t('HOME.CTA_SECONDARY') }}
+            </button>
+          </div>
         </div>
       </div>
     </section>
 
-    <section class="form-shell glass-panel">
-      <form class="form" @submit.prevent="submitForm">
-        <div class="form-row">
-          <BaseInput
-            v-model="formState.topic"
-            :schema="schema"
-            name="topic"
-            :label="t('DEBATE.TOPIC')"
-            :placeholder="t('DEBATE.PLACEHOLDER_TOPIC')"
-          />
-          <BaseSelect
-            v-model="formState.category"
-            :schema="schema"
-            name="category"
-            :label="t('DEBATE.CATEGORY')"
-            :placeholder="t('DEBATE.PLACEHOLDER_CATEGORY')"
-            :options="categories"
-          />
+    <section class="features">
+      <div class="container">
+        <div class="features__grid">
+          <div
+            v-for="(feature, index) in features"
+            :key="index"
+            class="feature-card"
+          >
+            <h3 class="feature-card__title">
+              {{ feature.title }}
+            </h3>
+            <p class="feature-card__desc">
+              {{ feature.description }}
+            </p>
+          </div>
         </div>
-
-        <div class="form-row">
-          <BaseDatePicker
-            v-model="formState.schedule"
-            :schema="schema"
-            name="schedule"
-            :label="t('DEBATE.SCHEDULE')"
-            :placeholder="t('DEBATE.SCHEDULE')"
-          />
-        </div>
-
-        <div class="form-row">
-          <BaseTextArea
-            v-model="formState.description"
-            :schema="schema"
-            name="description"
-            :label="t('DEBATE.DESCRIPTION')"
-            :placeholder="t('DEBATE.PLACEHOLDER_DESCRIPTION')"
-          />
-        </div>
-
-        <div class="form-row">
-          <BaseInput
-            v-model="formState.name"
-            :schema="schema"
-            name="name"
-            :label="t('USER.NAME')"
-            :placeholder="t('USER.NAME')"
-          />
-          <BaseInput
-            v-model="formState.email"
-            :schema="schema"
-            name="email"
-            type="email"
-            :label="t('USER.EMAIL')"
-            :placeholder="t('USER.EMAIL')"
-          />
-        </div>
-
-        <div class="form-actions">
-          <button type="submit" class="primary-btn">{{ t('GLOBAL.ACTION_PRIMARY') }}</button>
-        </div>
-
-        <div v-if="feedback" class="feedback">
-          {{ feedback }}
-        </div>
-      </form>
+      </div>
     </section>
   </div>
 </template>
+
+<style scoped lang="scss">
+@use '@/assets/styles/variables' as *;
+@use '@/assets/styles/mixins' as *;
+
+.home {
+  min-height: 100%;
+}
+
+.hero {
+  padding: $spacing-3xl * 2 0;
+  text-align: center;
+
+  @include mobile {
+    padding: $spacing-3xl 0;
+  }
+
+  &__content {
+    max-width: 800px;
+    margin: 0 auto;
+  }
+
+  &__title {
+    margin: 0 0 $spacing-xl;
+    font-size: clamp(32px, 6vw, 64px);
+    font-weight: 900;
+    letter-spacing: -1px;
+    color: $marine-deep;
+    line-height: 1.1;
+  }
+
+  &__subtitle {
+    margin: 0 0 $spacing-3xl;
+    font-size: clamp(16px, 3vw, 20px);
+    color: $text-muted;
+    line-height: 1.7;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  &__actions {
+    display: flex;
+    gap: $spacing-lg;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+}
+
+.features {
+  padding: $spacing-3xl * 2 0;
+
+  @include mobile {
+    padding: $spacing-3xl 0;
+  }
+
+  &__grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: $spacing-2xl;
+  }
+}
+
+.feature-card {
+  @include glass-panel;
+  padding: $spacing-2xl;
+  text-align: center;
+  @include transition(transform, box-shadow);
+
+  &:hover {
+    transform: translateY(-4px);
+    box-shadow: $shadow-strong;
+  }
+
+  &__title {
+    margin: 0 0 $spacing-md;
+    font-size: 20px;
+    font-weight: 700;
+    color: $marine-deep;
+  }
+
+  &__desc {
+    margin: 0;
+    color: $text-secondary;
+    line-height: 1.6;
+  }
+}
+</style>

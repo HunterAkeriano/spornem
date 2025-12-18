@@ -1,0 +1,44 @@
+@use '@/assets/styles/variables' as *;
+@use '@/assets/styles/mixins' as *;
+
+.base-textarea {
+  display: grid;
+  gap: $spacing-sm;
+
+  &__header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: $spacing-sm;
+  }
+
+  &__label {
+    font-weight: 700;
+    font-size: 14px;
+    color: $marine-deep;
+  }
+
+  &__error {
+    color: $error;
+    font-size: 13px;
+    font-weight: 600;
+  }
+
+  &__control {
+    width: 100%;
+    padding: 13px 14px;
+    border-radius: $radius-md;
+    border: 1px solid rgba($marine-mid, 0.25);
+    background: rgba(255, 255, 255, 0.9);
+    color: $text-primary;
+    font-size: 15px;
+    font-family: inherit;
+    resize: vertical;
+    min-height: 140px;
+    @include transition(border-color, box-shadow);
+
+    &:focus {
+      @include focus-ring;
+    }
+  }
+}

@@ -68,4 +68,4 @@ const onBlur = () => {
   </label>
 </template>
 
-<style scoped src="./BaseDatePicker.css"></style>
+<style scoped lang="scss" src="./BaseDatePicker.scss"></style>

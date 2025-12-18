@@ -77,4 +77,4 @@ const onBlur = () => {
   </label>
 </template>
 
-<style scoped src="./BaseSelect.css"></style>
+<style scoped lang="scss" src="./BaseSelect.scss"></style>

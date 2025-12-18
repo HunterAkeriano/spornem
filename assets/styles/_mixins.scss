@@ -1,0 +1,66 @@
+@use 'variables' as *;
+
+@mixin glass-panel {
+  background: $surface-glass;
+  border: 1px solid rgba(126, 181, 201, 0.25);
+  backdrop-filter: blur(16px);
+  box-shadow: $shadow-soft;
+  border-radius: $radius-xl;
+}
+
+@mixin transition($properties...) {
+  transition-duration: $transition-normal;
+  transition-timing-function: ease;
+  transition-property: $properties;
+}
+
+@mixin hover-lift {
+  @include transition(transform, box-shadow);
+
+  &:hover {
+    transform: translateY(-2px);
+    box-shadow: $shadow-strong;
+  }
+
+  &:active {
+    transform: translateY(0);
+  }
+}
+
+@mixin focus-ring($color: $marine-accent) {
+  outline: none;
+  border-color: $color;
+  box-shadow: 0 0 0 3px rgba($color, 0.15);
+}
+
+@mixin gradient-marine {
+  background: linear-gradient(120deg, $marine-mid, $marine-accent);
+}
+
+@mixin gradient-marine-soft {
+  background: linear-gradient(160deg, rgba($marine-light, 0.16), rgba($marine-accent, 0.12));
+}
+
+@mixin text-truncate {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+@mixin mobile {
+  @media (max-width: $breakpoint-mobile) {
+    @content;
+  }
+}
+
+@mixin tablet {
+  @media (max-width: $breakpoint-tablet) {
+    @content;
+  }
+}
+
+@mixin desktop {
+  @media (min-width: $breakpoint-desktop) {
+    @content;
+  }
+}
